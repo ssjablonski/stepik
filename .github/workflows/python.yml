@@ -1,25 +1,13 @@
-name: Python application
-
-on:
-  push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
-
-permissions:
-  contents: read
-
+name: GitHub Actions Demo
+run-name: ${{ github.actor }} is testing out GitHub Actions 
+on: [push]
 jobs:
-  build:
-
+  Explore-GitHub-Actions:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up Python 3.10
-      uses: actions/setup-python@v3
-      with:
-        python-version: "3.10"
-    - name: Run python application
-      run: |
-        python plik.py
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
+      - run: python plik.py
